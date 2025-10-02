@@ -17,13 +17,13 @@ Controller recommended
 
 <h3>Movement</h3>
 
-  - jump = X / Spacebar
-  - dash = X + X / 
-  - attack = square / E
-  - charged attack = circle / F
+  - jump = X   /   Spacebar
+  - dash = X + X   /   Spacebar + Spacebar
+  - attack = square   /   E
+  - charged attack = circle   /   F
 
 <h3>Wall Movement</h3>
 
-  - grab wall = L2 (hold) / Shift
-  - jump off wall = jump + joystick / Shift + Spacebar
-  - jump up = jump / Spacebar
+  - grab wall = L2 (hold)   /   Shift
+  - jump off wall = jump + joystick   /   Shift + Spacebar
+  - jump up = jump   /   Spacebar
