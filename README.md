@@ -6,6 +6,6 @@ This was built on [Godot version 4.3](https://godotengine.org/download/archive/4
 Once downloaded, unzip the folder and download the application using the .exe file.
 
 Select the folder of the github download and click "Import and Edit"
-![Import your project]("2D-Game/assets/step_1.png")
+![Import your project]("/assets/step_1.png")
 
 Now run your godot project!
