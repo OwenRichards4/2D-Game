@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt30bpwv8xg0b"]
+
+[ext_resource type="Script" path="res://Character/player.gd" id="2_3whvs"]
+[ext_resource type="Texture2D" uid="uid://p7jpskuimlwl" path="res://Character/73b04279b940e0f.png" id="2_44dsi"]
+[ext_resource type="PackedScene" uid="uid://dstud4rv3mh16" path="res://Character/fireball.tscn" id="3_jouga"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1cij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_44dsi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"fireball",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn8ik"]
+size = Vector2(282, 491)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_3whvs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(649, 350)
+scale = Vector2(0.467856, 0.467856)
+sprite_frames = SubResource("SpriteFrames_h1cij")
+animation = &"fireball"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(619, 368.5)
+shape = SubResource("RectangleShape2D_vn8ik")
+
+[node name="Fireball" parent="." instance=ExtResource("3_jouga")]
+position = Vector2(200, 265)
+scale = Vector2(0.262987, 0.262987)

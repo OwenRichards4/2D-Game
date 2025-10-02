@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt30bpwv8xg0b"]
+
+[ext_resource type="Script" path="res://Character/player.gd" id="2_3whvs"]
+[ext_resource type="Texture2D" uid="uid://p7jpskuimlwl" path="res://Character/73b04279b940e0f.png" id="2_44dsi"]
+[ext_resource type="PackedScene" uid="uid://28sfjdywris0" path="res://Character/Abilities/fireball.tscn" id="3_lsoky"]
+[ext_resource type="Texture2D" uid="uid://urfsjvoiueqp" path="res://Character/pixil-frame-0.png" id="3_yjm1b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1cij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yjm1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_44dsi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"fireball",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn8ik"]
+size = Vector2(116.502, 507.105)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_3whvs")
+fireball_scene = ExtResource("3_lsoky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(625, 376)
+scale = Vector2(1.22165, 1.22165)
+sprite_frames = SubResource("SpriteFrames_h1cij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(600.5, 378.15)
+scale = Vector2(2.30897, 1.19837)
+shape = SubResource("RectangleShape2D_vn8ik")

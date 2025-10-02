@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://28sfjdywris0"]
+
+[ext_resource type="Script" path="res://Character/Abilities/fireball.gd" id="1_dfi64"]
+[ext_resource type="Texture2D" uid="uid://diqksu23wl2xh" path="res://Character/Abilities/7218612.png" id="2_uvht8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu6bv"]
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_dfi64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(567, 334)
+scale = Vector2(14.7851, 16.27)
+shape = SubResource("CircleShape2D_fu6bv")
+
+[node name="7218612" type="Sprite2D" parent="."]
+position = Vector2(655, 334)
+rotation = 1.5708
+texture = ExtResource("2_uvht8")

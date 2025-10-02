@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4k7gxok3jgqx"]
+
+[ext_resource type="Texture2D" uid="uid://dhaas0fjwrm3o" path="res://Scene/muQL6L.jpg" id="1_0nvr7"]
+[ext_resource type="PackedScene" uid="uid://dnpyyc54phifo" path="res://Structures/Platform/platform.tscn" id="2_0jjee"]
+[ext_resource type="PackedScene" uid="uid://dt30bpwv8xg0b" path="res://Character/player.tscn" id="3_h5aga"]
+[ext_resource type="PackedScene" uid="uid://e46vlxsmha5r" path="res://Character/Items/Star/star.tscn" id="4_wgq5s"]
+[ext_resource type="PackedScene" uid="uid://dekcwgp5866p4" path="res://Structures/Burnable Wall/burnable_wall.tscn" id="5_7kcis"]
+[ext_resource type="PackedScene" uid="uid://cs4h6k4mw6os3" path="res://Structures/Star_Door/star_door.tscn" id="6_kjvt4"]
+[ext_resource type="PackedScene" uid="uid://drj3wllqm6se3" path="res://Scene/Overlay/overlay.tscn" id="7_k4wbv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p138o"]
+size = Vector2(3202.5, 334)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo46y"]
+size = Vector2(1035, 2402)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df7fb"]
+size = Vector2(2659, 557)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c31qh"]
+size = Vector2(875, 2396)
+
+[node name="Scene" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MuQl6l" type="Sprite2D" parent="Node2D"]
+position = Vector2(561, -248)
+scale = Vector2(2.19556, 2.3325)
+texture = ExtResource("1_0nvr7")
+
+[node name="Platform" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(-836, 18)
+scale = Vector2(2.36005, 2.36005)
+
+[node name="Platform2" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(-5, 361)
+scale = Vector2(0.339214, 0.339214)
+
+[node name="Platform3" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(439, 188)
+scale = Vector2(0.339214, 0.339214)
+
+[node name="Platform4" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(880, 13)
+scale = Vector2(0.339214, 0.339214)
+
+[node name="Platform5" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(437, -199)
+scale = Vector2(0.339214, 0.339214)
+
+[node name="Platform6" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(-12, -373)
+scale = Vector2(0.339214, 0.339214)
+
+[node name="Platform7" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(443, -574)
+scale = Vector2(0.339214, 0.339214)
+
+[node name="Platform8" parent="Node2D" instance=ExtResource("2_0jjee")]
+position = Vector2(908, -752)
+scale = Vector2(0.339214, 0.339214)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_h5aga")]
+position = Vector2(922, 395)
+scale = Vector2(0.225338, 0.225338)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(593.913, 310.769)
+scale = Vector2(22.5374, 705.566)
+limit_left = -160
+limit_top = -1160
+limit_right = 1540
+limit_bottom = 1000
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+editor_draw_limits = true
+
+[node name="Star" parent="." instance=ExtResource("4_wgq5s")]
+position = Vector2(89, 261)
+scale = Vector2(0.216229, 0.216229)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(615.25, -1257)
+shape = SubResource("RectangleShape2D_p138o")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-680.5, -21)
+shape = SubResource("RectangleShape2D_eo46y")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(885.5, 1131.5)
+shape = SubResource("RectangleShape2D_df7fb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1974.5, -48)
+shape = SubResource("RectangleShape2D_c31qh")
+
+[node name="Vines" parent="." instance=ExtResource("5_7kcis")]
+position = Vector2(1123, 415)
+scale = Vector2(0.746155, 1.08059)
+
+[node name="Area2D" parent="." instance=ExtResource("6_kjvt4")]
+position = Vector2(735, -1023)
+scale = Vector2(0.601502, 0.601502)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" parent="CanvasLayer" instance=ExtResource("7_k4wbv")]
+offset_top = 6.10352e-05
+offset_bottom = 6.10352e-05

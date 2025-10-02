@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://buc14a3g2co2r"]
+
+[ext_resource type="Script" path="res://Structures/reset areas/checkpoint.gd" id="1_2hnf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adfmf"]
+size = Vector2(18.3931, 19.789)
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_2hnf7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(320.048, 179.082)
+scale = Vector2(34.7903, 18.1837)
+shape = SubResource("RectangleShape2D_adfmf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

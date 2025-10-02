@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://28sfjdywris0"]
+
+[ext_resource type="Script" path="res://Character/Abilities/fireball.gd" id="1_dfi64"]
+[ext_resource type="Texture2D" uid="uid://dwl6i4m5de366" path="res://Character/Abilities/FB00_nyknck/FB005.png" id="2_nyolo"]
+[ext_resource type="Texture2D" uid="uid://y1s818ocwgfh" path="res://Character/Abilities/FB00_nyknck/FB003.png" id="3_3koem"]
+[ext_resource type="Texture2D" uid="uid://5r2x2ihrjcd6" path="res://Character/Abilities/FB00_nyknck/FB004.png" id="4_vsnod"]
+[ext_resource type="Texture2D" uid="uid://d3trlu7gh0pk" path="res://Character/Abilities/FB00_nyknck/FB002.png" id="5_rj6v0"]
+[ext_resource type="Texture2D" uid="uid://btnrpf5l43aw8" path="res://Character/Abilities/FB00_nyknck/FB001.png" id="6_puand"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bjn3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nyolo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3koem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vsnod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rj6v0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_puand")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu6bv"]
+
+[node name="Fireball" type="Area2D"]
+position = Vector2(162, 206)
+scale = Vector2(0.291665, 0.291665)
+collision_layer = 3
+script = ExtResource("1_dfi64")
+
+[node name="FireballAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(323.7, 353.812)
+scale = Vector2(19.0698, 19.0698)
+sprite_frames = SubResource("SpriteFrames_bjn3c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(567, 334)
+scale = Vector2(14.7851, 16.27)
+shape = SubResource("CircleShape2D_fu6bv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(561.573, 327)
+scale = Vector2(17.5573, 19.5)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

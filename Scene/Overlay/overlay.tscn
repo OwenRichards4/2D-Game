@@ -1,0 +1,148 @@
+[gd_scene load_steps=10 format=3 uid="uid://drj3wllqm6se3"]
+
+[ext_resource type="Texture2D" uid="uid://btnrpf5l43aw8" path="res://Character/Abilities/FB00_nyknck/FB001.png" id="1_0r0gq"]
+[ext_resource type="Script" path="res://Scene/Overlay/overlay.gd" id="1_p2vme"]
+[ext_resource type="Texture2D" uid="uid://b1hnmdix1dav3" path="res://Scene/Overlay/pixel-scroll-band-altes-manuskript-pergament-banner_158677-1470-modified.png" id="3_r7tdj"]
+[ext_resource type="FontFile" uid="uid://dalssr81yiiyi" path="res://Scene/Overlay/BoldPixels.ttf" id="4_vra66"]
+[ext_resource type="FontFile" uid="uid://be5rjjl1tl0gp" path="res://Scene/Overlay/BoldPixels.otf" id="5_j4a6k"]
+[ext_resource type="Texture2D" uid="uid://bp0a2cmomotqp" path="res://assets/Pixel UI pack 3/00.png" id="5_l70nm"]
+[ext_resource type="Texture2D" uid="uid://c15hsl6obhcwa" path="res://assets/Pixel UI pack 3/03.png" id="6_nj33a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgev3"]
+atlas = ExtResource("6_nj33a")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd270"]
+atlas = ExtResource("5_l70nm")
+region = Rect2(112, 112, 16, 16)
+margin = Rect2(16, 16, 16, 16)
+
+[node name="Overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p2vme")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 329.0
+offset_right = 679.0
+offset_bottom = 369.0
+scale = Vector2(0.697909, 0.697909)
+theme_override_constants/separation = -25
+
+[node name="TextureRect1" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_0r0gq")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_0r0gq")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_0r0gq")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 48.0
+scale = Vector2(1.2, 1)
+theme_override_constants/separation = -2
+
+[node name="Atk_Progress" type="TextureRect" parent="Control/HBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cgev3")
+stretch_mode = 3
+
+[node name="Heart4" type="TextureRect" parent="Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_vd270")
+stretch_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_vd270")
+stretch_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_vd270")
+stretch_mode = 2
+
+[node name="Heart1" type="TextureRect" parent="Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_vd270")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 54.0
+offset_top = -25.0
+offset_right = 680.0
+offset_bottom = 392.0
+scale = Vector2(0.837131, 0.270246)
+texture = ExtResource("3_r7tdj")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 148.0
+offset_right = 764.0
+offset_bottom = 195.0
+scale = Vector2(0.542477, 1.87233)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vra66")
+theme_override_font_sizes/font_size = 20
+
+[node name="End Game" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 623.0
+offset_bottom = 325.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="End Game"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 37.0
+offset_right = 606.0
+offset_bottom = 266.0
+theme_override_fonts/normal_font = ExtResource("5_j4a6k")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "
+[center]Tutorial Complete!
+Congratulations!![/center]"
+scroll_active = false
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0

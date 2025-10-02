@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://e46vlxsmha5r"]
+
+[ext_resource type="Texture2D" uid="uid://cllxsvm05pam" path="res://Character/Items/Star/purple-star-hi.png" id="1_2gusw"]
+[ext_resource type="Script" path="res://Character/Items/Star/star.gd" id="1_gp446"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pr80"]
+size = Vector2(376, 334)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_gp446")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(651, 347)
+scale = Vector2(0.654416, 0.578035)
+texture = ExtResource("1_2gusw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(653, 347)
+shape = SubResource("RectangleShape2D_4pr80")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
