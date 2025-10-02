@@ -19,6 +19,7 @@ var playerX
 var playerY
 var atk_progress = 0
 var charge_ready : bool = false
+var deathCheck : bool = false
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 

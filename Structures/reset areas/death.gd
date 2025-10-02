@@ -8,4 +8,4 @@ func _on_body_entered(body: Node2D) -> void:
 		death()
 
 func death():
-	target.global_position = Vector2(Global.spawnX, Global.spawnY)
+	Global.player_health = 0

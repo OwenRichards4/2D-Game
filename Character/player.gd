@@ -105,8 +105,10 @@ func _physics_process(delta):
 		Global.playerY = position.y
 		
 		if Global.player_health <= 0:
-			position.x = Global.spawnX
-			position.y = Global.spawnY
+			Global.deathCheck = true
+			global_position.x = Global.spawnX
+			global_position.y = Global.spawnY
+			Global.player_health = 20
 			
 		if onWall and HoldingPosition:
 			velocity.y = 0

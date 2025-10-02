@@ -15,7 +15,7 @@ region = Rect2(0, 48, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vd270"]
 atlas = ExtResource("5_l70nm")
 region = Rect2(112, 112, 16, 16)
-margin = Rect2(16, 16, 16, 16)
+margin = Rect2(0, 16, 16, 16)
 
 [node name="Overlay" type="Control"]
 layout_mode = 3
@@ -69,24 +69,28 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_vd270")
 stretch_mode = 2
+flip_h = true
 
 [node name="Heart3" type="TextureRect" parent="Control/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_vd270")
 stretch_mode = 2
+flip_h = true
 
 [node name="Heart2" type="TextureRect" parent="Control/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_vd270")
 stretch_mode = 2
+flip_h = true
 
 [node name="Heart1" type="TextureRect" parent="Control/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_vd270")
 stretch_mode = 2
+flip_h = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false

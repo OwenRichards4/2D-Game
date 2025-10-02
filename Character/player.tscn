@@ -514,8 +514,7 @@ script = ExtResource("2_3whvs")
 position = Vector2(704, 171)
 scale = Vector2(7.55763, 7.55763)
 sprite_frames = SubResource("SpriteFrames_h1cij")
-animation = &"sword_attack"
-frame = 2
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(618, 410.5)
@@ -547,7 +546,6 @@ scale = Vector2(7.55763, 7.55763)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 position = Vector2(27.446, 29)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_v5tgy")
 
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
