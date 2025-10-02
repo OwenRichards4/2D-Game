@@ -1,5 +1,5 @@
 <h1>Download Instructions</h1>
-Scroll up and click "Code" >> "Download ZIP"  to down the github project.
+Scroll up and click "Code" >> "Download ZIP"  to down the github project.<br><br>
 
 This was built on [Godot version 4.3](https://godotengine.org/download/archive/4.3-stable/), use the link below to download the correct version.
 
