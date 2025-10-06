@@ -37,7 +37,9 @@ func _process(delta: float) -> void:
 	
 	if currAtkProgress != Global.atk_progress:
 		currAtkProgress = Global.atk_progress
-		if currAtkProgress == 1:
+		if currAtkProgress == 0:
+			$Control/HBoxContainer2/Atk_Progress.texture = load("res://assets/PG_1.png")
+		elif currAtkProgress == 1:
 			$Control/HBoxContainer2/Atk_Progress.texture = load("res://assets/PG_2.png")
 		elif currAtkProgress == 2:
 			$Control/HBoxContainer2/Atk_Progress.texture = load("res://assets/PG_3.png")

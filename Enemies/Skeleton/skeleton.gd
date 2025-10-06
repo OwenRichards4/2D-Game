@@ -12,6 +12,7 @@ var count = 0
 var just_hit = false
 var just_hurt = false
 var dead = false
+var currBody = null
 
 var rng = RandomNumberGenerator.new()
 
@@ -48,8 +49,10 @@ func _process(delta: float) -> void:
 			if $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.frame == 5 and !just_hit and can_attack:
 				cooldown = true
 				hit()
+				if currBody != null and currBody.has_method("hurt"):
+					currBody.hurt()
 				Global.player_health -= 2.5
-				Global.atk_progress += 1
+				#Global.atk_progress += 1
 			if $AnimatedSprite2D.animation == "damage" and $AnimatedSprite2D.frame == 4:
 				$AnimatedSprite2D.play('idle')
 			
@@ -102,8 +105,10 @@ func _on_timer_timeout() -> void:
 
 # Attack Check
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	currBody = body
 	can_attack = true
 func _on_area_2d_body_exited(body: Node2D) -> void:
+	currBody = null
 	can_attack = false
 
 # Tracking Check

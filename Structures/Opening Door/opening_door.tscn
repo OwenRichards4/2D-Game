@@ -161,7 +161,6 @@ layer_0/tile_data = PackedInt32Array(65536, 786432, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(309, 179.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jcfq0")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

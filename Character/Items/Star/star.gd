@@ -25,7 +25,7 @@ func _process(delta):
 		
 		if Global.starCheck == get_tree().get_nodes_in_group("star"):
 			queue_free()
-		print(Global.player_health)
+		
 		if Global.deathCheck:
 			Global.deathCheck = false
 			position = respawnPOS

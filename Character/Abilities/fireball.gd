@@ -4,6 +4,7 @@ extends Area2D
 var direction: Vector2 = Vector2.RIGHT
 
 func _process(delta):
+	Global.atk_progress = 0
 	direction[1] = 0.0
 	if direction[0] > 0:
 		direction[0] = 1

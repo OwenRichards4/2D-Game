@@ -1,10 +1,9 @@
-[gd_scene load_steps=79 format=3 uid="uid://dt30bpwv8xg0b"]
+[gd_scene load_steps=75 format=3 uid="uid://dt30bpwv8xg0b"]
 
 [ext_resource type="Script" path="res://Character/player.gd" id="2_3whvs"]
 [ext_resource type="Texture2D" uid="uid://drk1fjr8qsp6v" path="res://Character/Fire vizard/Fireball.png" id="3_mm1q1"]
 [ext_resource type="Texture2D" uid="uid://bcfcfanx55jj" path="res://Character/Fire vizard/Charge.png" id="3_q5e8g"]
 [ext_resource type="Texture2D" uid="uid://bihvwd5nxndu0" path="res://Character/Fire vizard/Idle.png" id="4_gksly"]
-[ext_resource type="Texture2D" uid="uid://cds2s0j6g0irc" path="res://Character/Fire vizard/Hurt.png" id="4_yh8bs"]
 [ext_resource type="Texture2D" uid="uid://da8s21xhgd37q" path="res://Character/Fire vizard/Jump.png" id="5_18kg4"]
 [ext_resource type="Texture2D" uid="uid://crditaye1cpga" path="res://Character/Fire vizard/Run.png" id="6_nskx0"]
 [ext_resource type="Texture2D" uid="uid://cy4in28scppji" path="res://Character/Fire vizard/Walk.png" id="7_bx0yl"]
@@ -91,18 +90,6 @@ region = Rect2(768, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cqrw2"]
 atlas = ExtResource("3_mm1q1")
 region = Rect2(896, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y670q"]
-atlas = ExtResource("4_yh8bs")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjpqy"]
-atlas = ExtResource("4_yh8bs")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vc4k3"]
-atlas = ExtResource("4_yh8bs")
-region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wg7tf"]
 atlas = ExtResource("4_gksly")
@@ -342,20 +329,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y670q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mjpqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vc4k3")
-}],
-"loop": false,
-"name": &"hurt",
-"speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wg7tf")
 }, {
 "duration": 1.0,
@@ -484,7 +457,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_65xef")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_owdvb")
 }, {
 "duration": 1.0,
@@ -533,10 +506,8 @@ size = Vector2(45.4793, 34.1259)
 scale = Vector2(0.99849, 0.99849)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-visibility_layer = 3
 position = Vector2(-128.194, -125.189)
 scale = Vector2(0.747008, 0.747008)
-collision_mask = 3
 script = ExtResource("2_3whvs")
 
 [node name="Wizard" type="AnimatedSprite2D" parent="CharacterBody2D"]
@@ -559,29 +530,23 @@ position = Vector2(723, 380)
 target_position = Vector2(20, 0)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(600.633, 403.55)
+position = Vector2(601.974, 408.913)
 scale = Vector2(27.0664, 27.0664)
 rotation_smoothing_enabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
 position = Vector2(601.974, 407.572)
 scale = Vector2(28.367, -20.5614)
-energy = 0.64
+energy = 1.01
 texture = ExtResource("9_qtfb3")
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
 position = Vector2(704, 171)
 scale = Vector2(7.55763, 7.55763)
-collision_layer = 2
-collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 position = Vector2(27.446, 29)
 shape = SubResource("RectangleShape2D_v5tgy")
 
-[node name="ClimbTimer" type="Timer" parent="CharacterBody2D"]
-wait_time = 5.0
-
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="CharacterBody2D/ClimbTimer" to="CharacterBody2D" method="_on_climb_timer_timeout"]

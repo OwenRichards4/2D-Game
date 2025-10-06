@@ -21,10 +21,14 @@ var atk_progress = 0
 var charge_ready : bool = false
 var deathCheck : bool = false
 
+@onready var grip_strength = 4
+@onready var slipCheck : bool = true
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
 var starCheck
 
+@warning_ignore("unused_parameter")
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("attack_action"):
 		count -= 1

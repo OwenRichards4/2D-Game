@@ -21,15 +21,15 @@ var targetBody
 
 var testCount = 0 # DELETE ME
 
-var onWall : bool = false
 var isClimbUpPressed : bool = false
 var isClimbingUp : bool = false
 var isClimbDownPressed : bool = false
 var isClimbingDown : bool = false
-var isHoldingPosition : bool = false
 var HoldingPosition : bool = false
+var isHoldingPosition : bool = false
 
-var wallJump : bool = false
+@onready var onWall : bool = false
+@onready var wallJump : bool = false
 var movingLeft : bool = false
 var movingRight : bool = false
 var movingUp : bool = false
@@ -37,10 +37,13 @@ var wallJumpCooldown : bool = false
 
 var doingDamage : bool = false
 
+@onready var grip_cooldown : bool = false
+@onready var color_active : bool = false
+
 var count = 2
 var reload_time = 1
 
-var actions = ["fireball", "jump", "in_air", "landing", "dash", "sword_attack"]
+var actions = ["fireball", "jump", "in_air", "landing", "dash", "sword_attack", "hurt"]
 
 func _ready() -> void:
 	add_to_group("player")
@@ -53,8 +56,6 @@ func _input(event):
 	if event.is_action_pressed("jump") and is_on_floor():
 		$Wizard.play("jump")
 		velocity.y = jump_power * jump_multiplier
-		dash = false
-	elif is_on_floor():
 		dash = false
 		
 	if event.is_action_pressed("jump") and !is_on_floor() and !dash and !onWall:
@@ -104,12 +105,37 @@ func _physics_process(delta):
 		Global.playerX = position.x
 		Global.playerY = position.y
 		
+		if !Global.slipCheck:
+			resetClimbing()
+		
+		if is_on_floor():
+			dash = false
+			if $ClimbTimer.time_left > 0:
+				$ClimbTimer.stop()
+			grip_cooldown = false
+		
 		if Global.player_health <= 0:
 			Global.deathCheck = true
 			global_position.x = Global.spawnX
 			global_position.y = Global.spawnY
 			Global.player_health = 20
+		
+		if $ClimbTimer.time_left != 0 and $ClimbTimer.time_left <= 2.9 and !color_active:
+			color_active = true
+			for i in range(3):
+				$Wizard.modulate = Color(1,0,0,1)
+				await get_tree().create_timer(.25).timeout
+				$Wizard.modulate = Color(1,1,1,1)
+				await get_tree().create_timer(.25).timeout
+			for i in range(7):
+				$Wizard.modulate = Color(1,0,0,1)
+				await get_tree().create_timer(.1).timeout
+				$Wizard.modulate = Color(1,1,1,1)
+				await get_tree().create_timer(.1).timeout
 			
+		elif $ClimbTimer.time_left == 0 and color_active:
+			color_active = false
+		
 		if onWall and HoldingPosition:
 			velocity.y = 0
 		
@@ -139,6 +165,8 @@ func _physics_process(delta):
 				$Wizard.play("in_air")
 			velocity.y += Global.gravity * delta
 			inAir = true
+		if $Wizard.animation == "hurt" and $Wizard.frame == 2:
+			$Wizard.play("idle")
 		
 		if is_on_floor() and inAir:
 			$Wizard.play("landing")
@@ -239,18 +267,21 @@ func _on_finishAnimation(name: String):
 		$Wizard.stop()
 
 func resetClimbing():
-	isClimbingUp = false
-	isClimbingDown = false
 	HoldingPosition = false
 	isHoldingPosition = false
+	isClimbingUp = false
+	isClimbUpPressed = false
+	isClimbingDown = false
+	isClimbDownPressed = false
 
 func climbingSprite(delta):
 	# Toggle for climbing bugs:
-	# print(isClimbingUp, isClimbUpPressed, isClimbingDown ,isClimbDownPressed,HoldingPosition, isHoldingPosition)
-	if onWall:
+	if onWall and Global.slipCheck and !grip_cooldown:
 		if Input.is_action_pressed("hold_position") and !isHoldingPosition:
 			HoldingPosition = !HoldingPosition
 			isHoldingPosition = true
+			if $ClimbTimer.time_left == 0:
+				$ClimbTimer.start()
 		elif Input.is_action_just_released("hold_position"):
 			HoldingPosition = !HoldingPosition
 			isHoldingPosition = false
@@ -280,3 +311,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		doingDamage = false
+
+func _on_climb_timer_timeout() -> void:
+	if !is_on_floor() and onWall:
+		grip_cooldown = true
+		resetClimbing()
+
+func hurt():
+	$Wizard.play('hurt')

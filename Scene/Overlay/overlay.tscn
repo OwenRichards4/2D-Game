@@ -32,6 +32,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 537.0
 offset_top = 329.0
